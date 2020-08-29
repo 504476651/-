@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            font-size: 30px;
+            text-align: center;
+            line-height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    function doSomething(e){
+       e.target.innerText =~(Math.random()*10)
+    }
+    function newDosomething(fn,wait){
+        let timer      
+        let result = function(){
+            let context = this
+            clearTimeout(timer)
+            timer = setTimeout(fn.bind(context,arguments[0]),wait)
+        }
+        return result
+    }
+    let oDiv = document.querySelector('div')
+    oDiv.onmousemove = newDosomething(doSomething,1000)
+</script>
+</html>
